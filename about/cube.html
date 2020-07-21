@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>纯CSS实现炫酷魔方立方体相册特效代码</title>
-    <meta name="keywords" content="纯CSS,炫酷,魔方,立方体,相册,特效代码" />
-    <meta name="description" content="纯CSS实现炫酷魔方立方体相册特效代码下载。js代码(www.jsdaima.com)" />
+    <title>ysy</title>
+    <meta name="keywords" content="ysy beautiful" />
+    <meta name="description" content="ysy beautiful" />
 
     <style>
         * {
@@ -127,7 +127,7 @@
             transform: rotateX(-90deg) translateZ(100px);
         }
 
-        /*鼠标移入后样式*/
+        /* 鼠标移入后样式
         .cube:hover .out_front {
             transform: rotateY(0deg) translateZ(400px);
         }
@@ -149,6 +149,31 @@
         }
 
         .cube:hover .out_bottom {
+            transform: rotateX(-90deg) translateZ(400px);
+        } */
+
+        /*鼠标移入后样式*/
+        .cube .out_front[class~=click]  {
+            transform: rotateY(0deg) translateZ(400px);
+        }
+
+        .cube .out_back[class~=click]  {
+            transform: translateZ(-400px) rotateY(180deg);
+        }
+
+        .cube .out_left[class~=click]  {
+            transform: rotateY(90deg) translateZ(400px);
+        }
+
+        .cube .out_right[class~=click]  {
+            transform: rotateY(-90deg) translateZ(400px);
+        }
+
+        .cube .out_top[class~=click]  {
+            transform: rotateX(90deg) translateZ(400px);
+        }
+
+        .cube .out_bottom[class~=click]  {
             transform: rotateX(-90deg) translateZ(400px);
         }
     </style>
@@ -202,5 +227,19 @@
     </div>
 
 </body>
+
+<script>
+    let cube = document.querySelector('.cube')
+    let cube_children = cube.children
+
+    document.documentElement.addEventListener('click', function () {
+
+        for (let i = 0; i < 6; i++) {
+            let node = cube_children[i]
+            console.log('node', node)
+            node.classList.toggle('click')
+        }
+    })
+</script>
 
 </html>
